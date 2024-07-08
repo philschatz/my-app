@@ -5,6 +5,11 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
     plugins: [react()],
     test: {
+        coverage: {
+            enabled: true,
+            skipFull: true,
+            thresholds: { 100: true },
+        },
         environment: "jsdom",
     },
 });
