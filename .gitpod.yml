@@ -1,6 +1,7 @@
 vscode:
     extensions:
         - esbenp.prettier-vscode
+        - vitest.explorer
 
 tasks:
     - init: npm install
