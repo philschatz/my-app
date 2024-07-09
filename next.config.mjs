@@ -11,6 +11,6 @@ const aliases = options.aliases ?? undefined;
 const useCSSLayers = options.useCSSLayers ?? undefined;
 
 export default stylexPlugin({ rootDir, aliases, useCSSLayers })({
-    // transpilePackages: ["@stylexjs/open-props"],
+    transpilePackages: ["@stylexjs/open-props"],
 });
 /* v8 ignore end */

@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 
 import { ReactNode } from "react";
 import { StyleXArray } from "@stylexjs/stylex/lib/StyleXTypes";
+import { colors } from "./cssVars.stylex";
 
 const myStyles = stylex.create({
     card: {
@@ -11,14 +12,10 @@ const myStyles = stylex.create({
         padding: "16px",
         border: "1px spolid transparent",
         borderRadius: "8px",
-        backgroundColor: "gray",
+        backgroundColor: colors.secondary,
     },
 });
 
-type Props = Readonly<{
-    featuredBg?: StyleXArray<any>;
-    children: ReactNode;
-}>;
 export default function Home() {
     return (
         <div className={styles.page} {...stylex.props(myStyles.card)}>
