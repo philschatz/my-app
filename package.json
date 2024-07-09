@@ -12,11 +12,16 @@
         "test:watch": "vitest --watch"
     },
     "dependencies": {
+        "@stylexjs/open-props": "^0.7.5",
+        "@stylexjs/stylex": "^0.7.5",
         "next": "^14",
         "react": "^18",
         "react-dom": "^18"
     },
     "devDependencies": {
+        "@stylexjs/babel-plugin": "^0.7.5",
+        "@stylexjs/eslint-plugin": "^0.7.5",
+        "@stylexjs/nextjs-plugin": "^0.7.5",
         "@testing-library/react": "^16.0.0",
         "@types/node": "^20",
         "@types/react": "^18",

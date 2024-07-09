@@ -1,9 +1,27 @@
+import stylex from "@stylexjs/stylex";
 import Image from "next/image";
 import styles from "./page.module.css";
 
+import { ReactNode } from "react";
+import { StyleXArray } from "@stylexjs/stylex/lib/StyleXTypes";
+
+const myStyles = stylex.create({
+    card: {
+        margin: "32px",
+        padding: "16px",
+        border: "1px spolid transparent",
+        borderRadius: "8px",
+        backgroundColor: "gray",
+    },
+});
+
+type Props = Readonly<{
+    featuredBg?: StyleXArray<any>;
+    children: ReactNode;
+}>;
 export default function Home() {
     return (
-        <div className={styles.page}>
+        <div className={styles.page} {...stylex.props(myStyles.card)}>
             <main className={styles.main}>
                 <h1 className={styles.title}>
                     Welcome to <a href="https://nextjs.org">Next.js!</a>
