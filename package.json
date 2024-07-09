@@ -6,8 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint && prettier --check .",
-        "lint:fix": "next lint --fix && prettier --write .",
+        "lint": "eslint .",
+        "lint:fix": "next lint --fix",
         "test": "vitest run",
         "test:watch": "vitest --watch"
     },
@@ -25,9 +25,7 @@
         "@vitest/coverage-v8": "^2.0.1",
         "eslint": "^8",
         "eslint-config-next": "^14",
-        "eslint-config-prettier": "^9.1.0",
         "jsdom": "^24.1.0",
-        "prettier": "^3.3.2",
         "typescript": "^5",
         "vitest": "^2.0.1"
     }
