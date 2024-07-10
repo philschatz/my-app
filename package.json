@@ -8,6 +8,7 @@
         "start": "next start",
         "lint": "next lint && prettier --check .",
         "lint:fix": "next lint --fix && prettier --write .",
+        "lighthouse": "lighthouse --no-enable-error-reporting $([ 'zzz' = \"zzz$(command -v gp)\" ] && echo 'http://localhost:3000' || gp url 3000)",
         "test": "vitest run",
         "test:watch": "vitest --watch"
     },
@@ -32,6 +33,7 @@
         "eslint-config-next": "^14",
         "eslint-config-prettier": "^9.1.0",
         "jsdom": "^24.1.0",
+        "lighthouse": "^12.1.0",
         "prettier": "^3.3.2",
         "typescript": "^5",
         "vitest": "^2.0.1"
