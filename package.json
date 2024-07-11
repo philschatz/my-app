@@ -20,6 +20,7 @@
         "react-dom": "^18"
     },
     "devDependencies": {
+        "@mantine/core": "^7.11.1",
         "@stylexjs/babel-plugin": "^0.7.5",
         "@stylexjs/eslint-plugin": "^0.7.5",
         "@stylexjs/nextjs-plugin": "^0.7.5",

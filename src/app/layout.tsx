@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "@mantine/core/styles.css";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { theme } from "./theme";
 
 // // Syntax error: "next/font" requires SWC although Babel is being used due to a custom babel config being present.
 // // Read more: https://nextjs.org/docs/messages/babel-font-loader-conflict
@@ -25,8 +28,17 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <ColorSchemeScript />
+                <meta
+                    name="viewport"
+                    content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+                />
+            </head>
             {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
-            <body>{children}</body>
+            <body>
+                <MantineProvider theme={theme}>{children}</MantineProvider>
+            </body>
         </html>
     );
 }

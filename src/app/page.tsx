@@ -1,10 +1,32 @@
+"use client";
+import { useState } from "react";
+import { Button, Checkbox } from "@mantine/core";
 import stylex from "@stylexjs/stylex";
 import Image from "next/image";
 import styles from "./page.module.css";
 
-import { ReactNode } from "react";
-import { StyleXArray } from "@stylexjs/stylex/lib/StyleXTypes";
 import { colors } from "./cssVars.stylex";
+
+export function ToggleButton() {
+    const [isToggled, setFullWidth] = useState(false);
+    function toggle() {
+        setFullWidth(!isToggled);
+    }
+    return (
+        <div>
+            <Checkbox
+                checked={isToggled}
+                onChange={toggle}
+                label="checkbox label"
+            />
+            <Button fullWidth={isToggled} onClick={toggle}>
+                {isToggled
+                    ? "checkbox is set. click to clear"
+                    : "checkbox is cleared. click to set"}
+            </Button>
+        </div>
+    );
+}
 
 const myStyles = stylex.create({
     card: {
@@ -23,6 +45,7 @@ export default function Home() {
                 <h1 className={styles.title}>
                     Welcome to <a href="https://nextjs.org">Next.js!</a>
                 </h1>
+                <ToggleButton />
 
                 <Image
                     className={styles.logo}
