@@ -13,6 +13,9 @@
         "test:watch": "vitest --watch"
     },
     "dependencies": {
+        "jsonwebtoken": "^9.0.2",
+        "@clerk/nextjs": "^5.2.3",
+        "@clerk/clerk-sdk-node": "^5.0.9",
         "@stylexjs/open-props": "^0.7.5",
         "@stylexjs/stylex": "^0.7.5",
         "next": "^14",
@@ -20,6 +23,7 @@
         "react-dom": "^18"
     },
     "devDependencies": {
+        "@types/jsonwebtoken": "^9.0.6",
         "@mantine/core": "^7.11.1",
         "@stylexjs/babel-plugin": "^0.7.5",
         "@stylexjs/eslint-plugin": "^0.7.5",
