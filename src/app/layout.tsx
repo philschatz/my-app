@@ -10,6 +10,7 @@ import {
 import "./globals.css";
 
 import styles from "./layout.module.css";
+import Link from "next/link";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
                 <body>
                     {/* <body className={inter.className}> */}
                     <div className={styles.loginLogout}>
+                        <Link href="/">Go Home</Link>
                         <SignedOut>
                             <SignInButton />
                         </SignedOut>

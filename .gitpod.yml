@@ -3,7 +3,8 @@ image: gitpod/workspace-full-vnc
 
 ports:
     - port: 3000
-      visibility: public
+      visibility: private
+      onOpen: open-preview
 
 vscode:
     extensions:
