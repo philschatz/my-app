@@ -3,6 +3,7 @@
 import { AppShell, Group  } from '@mantine/core';
 import { SafeInsightsLogo } from './si-logo'
 import { NavAuthMenu } from './nav-auth-menu';
+import Link from "next/link";
 
 type Props = {
   children: React.ReactNode
@@ -22,7 +23,7 @@ export function AppLayout({ children}: Props) {
         >
             <AppShell.Header>
                 <Group h="100%" px="md" justify='space-between'>
-                    <SafeInsightsLogo height={30} />
+                    <Link href="/"><SafeInsightsLogo height={30} /></Link>
                     <NavAuthMenu />
                 </Group>
             </AppShell.Header>
