@@ -13,22 +13,23 @@
         "test:watch": "vitest --watch"
     },
     "dependencies": {
-        "jsonwebtoken": "^9.0.2",
-        "@clerk/nextjs": "^5.2.3",
         "@clerk/clerk-sdk-node": "^5.0.9",
+        "@clerk/nextjs": "^5.2.3",
         "@stylexjs/open-props": "^0.7.5",
         "@stylexjs/stylex": "^0.7.5",
+        "@tabler/icons-react": "^3.11.0",
+        "jsonwebtoken": "^9.0.2",
         "next": "^14",
         "react": "^18",
         "react-dom": "^18"
     },
     "devDependencies": {
-        "@types/jsonwebtoken": "^9.0.6",
         "@mantine/core": "^7.11.1",
         "@stylexjs/babel-plugin": "^0.7.5",
         "@stylexjs/eslint-plugin": "^0.7.5",
         "@stylexjs/nextjs-plugin": "^0.7.5",
         "@testing-library/react": "^16.0.0",
+        "@types/jsonwebtoken": "^9.0.6",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
