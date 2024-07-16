@@ -6,8 +6,8 @@ import { Providers } from '@/components/providers'
 import { AppLayout } from "@/components/app-layout";
 
 export const metadata: Metadata = {
-    title: "Clerk Spike",
-    description: "A code spike to test Clerk functionality",
+    title: "SafeInsights Demo App",
+    description: "A test application to demonstrate basic IAM functionality",
 };
 
 export default function RootLayout({
