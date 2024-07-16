@@ -38,3 +38,6 @@ next-env.d.ts
 
 /.direnv
 /lighthouse-results.report.*
+
+cdk.out
+.open-next/
