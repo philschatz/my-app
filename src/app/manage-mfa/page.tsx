@@ -153,7 +153,7 @@ export default function AddMFaScreen() {
             {step === "verify" && <VerifyTotpScreen setStep={setStep} />}
             {step === "backupcodes" && <BackupCodeScreen setStep={setStep} />}
             {step === "success" && <SuccessScreen />}
-            <Link href="/account/manage-mfa">Manage MFA</Link>
+            <Link href="/manage-mfa">Manage MFA</Link>
         </>
     );
 }
