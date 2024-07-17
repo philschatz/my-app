@@ -60,7 +60,11 @@ export default function Signup() {
             });
 
             setVerifying(true);
-        } catch {
+        } catch (err: any) {
+            const emailError = err.errors?.find((error: any) => error.meta?.paramName === 'email_address')
+            if (emailError) {
+                form.setFieldError('email', emailError.longMessage);
+            }
             console.error(JSON.stringify(err, null, 2));
         }
     }
@@ -103,11 +107,14 @@ export default function Signup() {
 
 const EmailVerificationStep = () => {
     const { isLoaded, signUp, setActive } = useSignUp();
-    const verifyForm = useForm<EmailVerificationFormValues>()
+    const verifyForm = useForm<EmailVerificationFormValues>({
+        initialValues: {
+            code: ''
+        }
+    })
 
     const handleVerify = async (values: EmailVerificationFormValues) => {
         if (!isLoaded) return;
-        console.log(values);
 
         try {
             // Use the code the user provided to attempt verification
@@ -119,13 +126,21 @@ const EmailVerificationStep = () => {
             // and redirect the user
             if (completeSignUp.status === 'complete') {
                 await setActive({ session: completeSignUp.createdSessionId });
-                redirect('/')
+                redirect("/protected")
             } else {
                 // If the status is not complete, check why. User may need to
                 // complete further steps.
                 console.error(JSON.stringify(completeSignUp, null, 2));
             }
         } catch (err: any) {
+            // TODO Explore clerk docs for how to better handle error messages
+            //  Currently unclear because signUp.attemptVerification method just 422s and doesnt return anything useful
+            if (err.errors.length) {
+                err.errors.forEach(error => {
+                    verifyForm.setFieldError('code', error.longMessage)
+                })
+            }
+
             console.error('Error:', JSON.stringify(err, null, 2));
         }
     };
@@ -140,7 +155,6 @@ const EmailVerificationStep = () => {
                     key={verifyForm.key('code')}
                     {...verifyForm.getInputProps('code')}
                 />
-
 
                 <Group justify="flex-end" mt="md">
                     <Button type="submit">Submit</Button>
