@@ -3,7 +3,7 @@ import { Table } from '@mantine/core';
 import { useOrganization } from "@clerk/nextjs";
 import { Protect, useClerk } from "@clerk/nextjs"
 import { IconTrashXFilled } from '@tabler/icons-react'
-
+import { notifications } from '@mantine/notifications'
 
 // ugg, this is a mess why can't clerk export the type
 type Organization = NonNullable<
@@ -35,7 +35,6 @@ function useOrganizationMembers(): { members: Membership[], organization: Organi
             return;
         }
         organization.getMemberships().then((memberships) => {
-            console.log(memberships.data)
             setMembers(memberships.data)
         });
     }, [organization])
@@ -46,24 +45,31 @@ function useOrganizationMembers(): { members: Membership[], organization: Organi
 
 export const OrganizationMembersTable = () => {
 
-    const { members, organization } = useOrganizationMembers()
+    const { members } = useOrganizationMembers()
 
     if (!members.length) {
       return null;
     }
 
-    const onDelete = (userId?: string) => {
-        if (!userId) {
+    const onDelete = async (member?: Membership) => {
+        if (!member) {
             return;
         }
+        const userName = `${member.publicUserData.firstName} ${member.publicUserData.lastName}`
+        try {
+            await member.destroy()
+            notifications.show({
+                title: 'Removed user',
+                message:  ` ${userName} was successfully removed`,
+            })
+        } catch (error) {
+            notifications.show({
+                title: `Error: ${error}`,
+                message: `Failed to remove user: ${userName}`,
+                color: 'red',
+            })
+        }
 
-        organization?.removeMember(userId)
-
-        //.deleteOrganizationMembership({ userId, organizationId: organization.id })
-
-        //        const response = await clerkClient.organizations.deleteOrganizationMembership({ organizationId, userId });
-
-        console.log("delete")
     }
     const rows = members.map((member) => (
         <Table.Tr key={member.id}>
@@ -72,7 +78,7 @@ export const OrganizationMembersTable = () => {
             <Table.Td>{member.publicUserData.lastName}</Table.Td>
             <Table.Td>
                 <Protect permission="org:sys_memberships:manage">
-                    <IconTrashXFilled onClick={() => onDelete(member.publicUserData.userId)} cursor="pointer" />
+                    <IconTrashXFilled onClick={() => onDelete(member)} cursor="pointer" />
                 </Protect>
             </Table.Td>
         </Table.Tr>
