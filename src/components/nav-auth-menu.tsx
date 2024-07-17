@@ -3,7 +3,9 @@ import {
     SignedIn,
     SignedOut,
     UserButton,
+    OrganizationSwitcher ,
 } from "@clerk/nextjs";
+import { Group  } from '@mantine/core'
 
 export const NavAuthMenu = () => {
 
@@ -14,7 +16,10 @@ export const NavAuthMenu = () => {
             </SignedOut>
 
             <SignedIn>
-                <UserButton />
+                <Group>
+                    <UserButton />
+                    <OrganizationSwitcher />
+                </Group>
             </SignedIn>
         </>
     )
