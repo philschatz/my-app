@@ -16,6 +16,8 @@
     "dependencies": {
         "@clerk/clerk-sdk-node": "^5.0.9",
         "@clerk/nextjs": "^5.2.3",
+        "@mantine/form": "^7.11.2",
+        "@mantine/notifications": "^7.11.2",
         "@stylexjs/open-props": "^0.7.5",
         "@stylexjs/stylex": "^0.7.5",
         "@tabler/icons-react": "^3.11.0",
@@ -26,7 +28,9 @@
         "react-dom": "^18"
     },
     "devDependencies": {
+        "@clerk/types": "^4.8.0",
         "@mantine/core": "^7.11.1",
+        "@mantine/form": "^7.11.1",
         "@stylexjs/babel-plugin": "^0.7.5",
         "@stylexjs/eslint-plugin": "^0.7.5",
         "@stylexjs/nextjs-plugin": "^0.7.5",
