@@ -38,7 +38,12 @@ next-env.d.ts
 
 /.direnv
 /lighthouse-results.report.*
-<<<<<<< Updated upstream
+
+.idea/
 
 cdk.out
 .open-next/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
