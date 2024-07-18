@@ -204,7 +204,8 @@ export const OrganizationMembersTable = () => {
 
     return (
         <Flex direction="column">
-            <Table>
+            <Table captionSide="top">
+                <Table.Caption>Members</Table.Caption>
                 <Table.Thead>
                     <Table.Tr>
                         <Table.Th></Table.Th>
