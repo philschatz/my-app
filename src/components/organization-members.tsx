@@ -15,6 +15,7 @@ import {
     OrganizationResource,
 } from "@clerk/types";
 import { Protect } from "@clerk/nextjs";
+import { reportError } from "@/components/errors";
 import { IconTrashXFilled, IconAt } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 
@@ -81,11 +82,8 @@ const InviteUser: React.FC<{ organization: OrganizationResource }> = ({
                     });
                 });
         } catch (error) {
-            notifications.show({
-                title: `Error: ${error}`,
-                message: `Failed to invite user with email ${form.values.email}`,
-                color: "red",
-            });
+            reportError(error, `Failed to invite user with email ${form.values.email}`)
+
         }
     });
 
@@ -149,11 +147,7 @@ const onToggleAdminRole = async (member: OrganizationMembershipResource) => {
             message: ` ${userName} was successfully updated`,
         });
     } catch (error) {
-        notifications.show({
-            title: `Error: ${error}`,
-            message: `Failed to update user: ${userName}`,
-            color: "red",
-        });
+        reportError(error, `Failed to update user: ${userName}`);
     }
 };
 
@@ -165,11 +159,7 @@ const onCancelInvite = async (invite: OrganizationInvitationResource) => {
             message: `Invitation to ${invite.emailAddress} was successfully cancelled`,
         });
     } catch (error) {
-        notifications.show({
-            title: `Error: ${error}`,
-            message: `Failed to cancel invitation to ${invite.emailAddress}`,
-            color: "red",
-        });
+        reportError(error, `Failed to cancel invitation to ${invite.emailAddress}`);
     }
 };
 
