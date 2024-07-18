@@ -2,8 +2,9 @@
 import {Button, Checkbox, Group, Loader, PasswordInput, Stack, Text, TextInput, Title} from "@mantine/core";
 import {useSignUp} from "@clerk/nextjs";
 import {isEmail, isNotEmpty, useForm} from "@mantine/form";
-import {redirect} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {useState} from "react";
+import { reportError } from "@/components/errors";
 
 interface SignUpFormValues {
     email: string;
@@ -18,6 +19,7 @@ interface EmailVerificationFormValues {
 export default function Signup() {
     const { isLoaded, signUp } = useSignUp();
     const [verifying, setVerifying] = useState(false)
+    const router = useRouter()
 
     const form = useForm<SignUpFormValues>({
         initialValues: {
@@ -43,7 +45,7 @@ export default function Signup() {
     }
 
     if (signUp?.status === "complete") {
-        redirect("/")
+        router.push("/")
     }
 
     const onSubmit = async (values: SignUpFormValues) => {
@@ -61,11 +63,12 @@ export default function Signup() {
 
             setVerifying(true);
         } catch (err: any) {
+            reportError(err, 'failed to create signup')
+
             const emailError = err.errors?.find((error: any) => error.meta?.paramName === 'email_address')
             if (emailError) {
                 form.setFieldError('email', emailError.longMessage);
             }
-            console.error(JSON.stringify(err, null, 2));
         }
     }
 
@@ -107,6 +110,8 @@ export default function Signup() {
 
 const EmailVerificationStep = () => {
     const { isLoaded, signUp, setActive } = useSignUp();
+    const router = useRouter()
+
     const verifyForm = useForm<EmailVerificationFormValues>({
         initialValues: {
             code: ''
@@ -126,22 +131,23 @@ const EmailVerificationStep = () => {
             // and redirect the user
             if (completeSignUp.status === 'complete') {
                 await setActive({ session: completeSignUp.createdSessionId });
-                redirect("/protected")
+                router.push("/protected")
             } else {
                 // If the status is not complete, check why. User may need to
                 // complete further steps.
                 console.error(JSON.stringify(completeSignUp, null, 2));
             }
         } catch (err: any) {
+            reportError(err, 'failed to verify email address')
+
             // TODO Explore clerk docs for how to better handle error messages
             //  Currently unclear because signUp.attemptVerification method just 422s and doesnt return anything useful
-            if (err.errors.length) {
+            if (err.errors?.length) {
                 err.errors.forEach(error => {
                     verifyForm.setFieldError('code', error.longMessage)
                 })
             }
 
-            console.error('Error:', JSON.stringify(err, null, 2));
         }
     };
 
