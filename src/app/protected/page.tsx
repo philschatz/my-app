@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 
 export default function ProtectedHome() {
     const { isSignedIn, isLoaded } = useUser();
-    console.log(isSignedIn);
     if (isLoaded && !isSignedIn) {
         redirect("/");
     }

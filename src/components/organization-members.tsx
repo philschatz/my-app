@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { Avatar, Flex, Button, Table, TextInput } from "@mantine/core";
+import {
+    Avatar,
+    Flex,
+    Button,
+    Table,
+    TextInput,
+    Checkbox,
+} from "@mantine/core";
 import { useForm, isEmail, isInRange, hasLength, matches } from "@mantine/form";
 import { useOrganization } from "@clerk/nextjs";
 import {
@@ -105,10 +112,7 @@ const InviteUser: React.FC<{ organization: OrganizationResource }> = ({
     );
 };
 
-const onDeleteMember = async (member?: OrganizationMembershipResource) => {
-    if (!member) {
-        return;
-    }
+const onDeleteMember = async (member: OrganizationMembershipResource) => {
     const userName = `${member.publicUserData.firstName} ${member.publicUserData.lastName}`;
     try {
         await member.destroy();
@@ -120,6 +124,34 @@ const onDeleteMember = async (member?: OrganizationMembershipResource) => {
         notifications.show({
             title: `Error: ${error}`,
             message: `Failed to remove user: ${userName}`,
+            color: "red",
+        });
+    }
+};
+
+function toggle<T>(optionA: T, optionB: T, current: T) {
+    if (current === optionA) {
+        return optionB;
+    } else if (current === optionB) {
+        return optionA;
+    } else {
+        throw new Error(`BUG: Unsupported Option "${current}"`);
+    }
+}
+
+const onToggleAdminRole = async (member: OrganizationMembershipResource) => {
+    const userName = `${member.publicUserData.firstName} ${member.publicUserData.lastName}`;
+    try {
+        let newRole = toggle("org:member", "org:admin", member.role);
+        await member.update({ role: newRole });
+        notifications.show({
+            title: "Updated user",
+            message: ` ${userName} was successfully updated`,
+        });
+    } catch (error) {
+        notifications.show({
+            title: `Error: ${error}`,
+            message: `Failed to update user: ${userName}`,
             color: "red",
         });
     }
@@ -188,11 +220,10 @@ export const OrganizationMembersTable = () => {
                         <Table.Th></Table.Th>
                         <Table.Th>First Name</Table.Th>
                         <Table.Th>Last Name</Table.Th>
-                        <Table.Th>
-                            <Protect permission="org:sys_memberships:manage">
-                                Delete
-                            </Protect>
-                        </Table.Th>
+                        <Protect permission="org:sys_memberships:manage">
+                            <Table.Th>Admin</Table.Th>
+                            <Table.Th>Delete</Table.Th>
+                        </Protect>
                     </Table.Tr>
                 </Table.Thead>
                 <Table.Tbody>
@@ -207,14 +238,23 @@ export const OrganizationMembersTable = () => {
                             <Table.Td>
                                 {member.publicUserData.lastName}
                             </Table.Td>
-                            <Table.Td>
-                                <Protect permission="org:sys_memberships:manage">
+                            <Protect permission="org:sys_memberships:manage">
+                                <Table.Td>
+                                    <Checkbox
+                                        checked={member.role === "org:admin"}
+                                        title={member.role}
+                                        onClick={() =>
+                                            onToggleAdminRole(member)
+                                        }
+                                    />
+                                </Table.Td>
+                                <Table.Td>
                                     <IconTrashXFilled
                                         onClick={() => onDeleteMember(member)}
                                         cursor="pointer"
                                     />
-                                </Protect>
-                            </Table.Td>
+                                </Table.Td>
+                            </Protect>
                         </Table.Tr>
                     ))}
                 </Table.Tbody>
