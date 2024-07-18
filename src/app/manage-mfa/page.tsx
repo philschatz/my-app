@@ -4,6 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import { TOTPResource } from "@clerk/types";
 import Link from "next/link";
 import * as React from "react";
+import {Button, Group, Stack, Text, TextInput, Title} from "@mantine/core";
 // import { QRCodeSVG } from "qrcode.react";
 // import { GenerateBackupCodes } from "../page";
 
@@ -35,36 +36,40 @@ function AddTotpScreen({
     }, []);
 
     return (
-        <>
-            <h1>Add TOTP MFA</h1>
+        <Stack>
+            <Title order={1}>Add TOTP MFA</Title>
 
             {totp && displayFormat === "qr" && (
-                <>
-                    <div>
-                        {/* <QRCodeSVG value={totp?.uri || ""} size={200} /> */}
-                    </div>
-                    <button onClick={() => setDisplayFormat("uri")}>
+                <Group>
+                    {/* <QRCodeSVG value={totp?.uri || ""} size={200} /> */}
+                    <Button onClick={() => setDisplayFormat("uri")}>
                         Use URI instead
-                    </button>
-                </>
+                    </Button>
+                </Group>
             )}
             {totp && displayFormat === "uri" && (
-                <>
-                    <div>
-                        <p>{totp.uri}</p>
-                    </div>
-                    <button onClick={() => setDisplayFormat("qr")}>
+                <Group>
+                    <Text>
+                        {totp.uri}
+                    </Text>
+                    <Button onClick={() => setDisplayFormat("qr")}>
                         Use QR Code instead
-                    </button>
-                </>
+                    </Button>
+                </Group>
             )}
-            <button onClick={() => setStep("add")}>Reset</button>
+            <Group>
+                <Button onClick={() => setStep("add")}>
+                    Reset
+                </Button>
+            </Group>
 
-            <p>
-                Once you have set up your authentication app, verify your code
-            </p>
-            <button onClick={() => setStep("verify")}>Verify</button>
-        </>
+
+            <Stack>
+                <Text>Once you have set up your authentication app, verify your code</Text>
+                <Button onClick={() => setStep("verify")}>Verify</Button>
+            </Stack>
+
+        </Stack>
     );
 }
 
@@ -87,21 +92,21 @@ function VerifyTotpScreen({
     };
 
     return (
-        <>
-            <h1>Verify TOTP</h1>
+        <Stack>
+            <Title order={1}>Verify TOTP</Title>
             <form onSubmit={(e) => verifyTotp(e)}>
-                <label htmlFor="totp-code">
-                    Enter the code from your authentication app
-                </label>
-                <input
-                    type="text"
-                    id="totp-code"
-                    onChange={(e) => setCode(e.currentTarget.value)}
-                />
-                <button type="submit">Verify code</button>
-                <button onClick={() => setStep("add")}>Reset</button>
+                <Stack>
+                    <TextInput
+                        type="text"
+                        id="totp-code"
+                        label='Enter the code from your authentication app'
+                        onChange={(e) => setCode(e.currentTarget.value)}
+                    />
+                    <Button type="submit">Verify code</Button>
+                    <Button onClick={() => setStep("add")}>Reset</Button>
+                </Stack>
             </form>
-        </>
+        </Stack>
     );
 }
 
@@ -111,29 +116,26 @@ function BackupCodeScreen({
     setStep: React.Dispatch<React.SetStateAction<AddTotpSteps>>;
 }) {
     return (
-        <>
-            <h1>Backup codes</h1>
-            <div>
-                <p>
-                    Save this list of backup codes somewhere safe in case you
-                    need to access your account in an emergency
-                </p>
-                {/* <GenerateBackupCodes /> */}
-                <button onClick={() => setStep("success")}>Finish</button>
-            </div>
-        </>
+        <Stack>
+            <Title order={1}>Backup codes</Title>
+            <Text>
+                Save this list of backup codes somewhere safe in case you
+                need to access your account in an emergency
+            </Text>
+            {/* <GenerateBackupCodes /> */}
+            <Button onClick={() => setStep("success")}>
+                Finish
+            </Button>
+        </Stack>
     );
 }
 
 function SuccessScreen() {
     return (
-        <>
-            <h1>Success!</h1>
-            <p>
-                You have successfully added TOTP MFA via an authentication
-                application.
-            </p>
-        </>
+        <Stack>
+            <Title order={1}>Success!</Title>
+            <Text>You have successfully added TOTP MFA via an authentication application.</Text>
+        </Stack>
     );
 }
 
@@ -144,7 +146,7 @@ export default function AddMFaScreen() {
     if (!isLoaded) return null;
 
     if (!user) {
-        return <p>You must be logged in to access this page</p>;
+        return <Text>You must be logged in to access this page</Text>;
     }
 
     return (
