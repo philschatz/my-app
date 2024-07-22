@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "../page.module.css";
 import { Skeleton } from "@mantine/core";
 import { Protect, useUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
@@ -19,7 +18,9 @@ export default function ProtectedHome() {
     }
 
     return (
-        <main className={styles.main}>
+        <main>
+            This is the public part of the admin page (eventually this text will
+            be removed).
             <Protect
                 permission="org:sys_memberships:manage"
                 fallback={
