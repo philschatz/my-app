@@ -8,6 +8,10 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # next.js
 /.next/
@@ -35,15 +39,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
 /.direnv
 /lighthouse-results.report.*
 
+cdk.out
+.open-next/
 .idea/
 
 cdk.out
 .open-next/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/

@@ -8,7 +8,6 @@ import { OrganizationMembersTable } from "@/components/organization-members";
 
 export default function ProtectedHome() {
     const { isSignedIn, isLoaded } = useUser();
-    console.log(isSignedIn);
 
     if (isLoaded && !isSignedIn) {
         redirect("/");
