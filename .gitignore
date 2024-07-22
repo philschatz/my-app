@@ -44,7 +44,8 @@ next-env.d.ts
 
 cdk.out
 .open-next/
-.idea/
 
-cdk.out
-.open-next/
+# editor configs
+# todo should we be editor agnostic and ignore .vscode too?
+# .vscode/
+.idea/
