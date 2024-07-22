@@ -1,5 +1,5 @@
 "use client";
-import styles from "../page.module.css";
+
 import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -9,7 +9,7 @@ export default function ProtectedHome() {
         redirect("/");
     }
     return (
-        <main className={styles.main}>
+        <main>
             <SignedOut>
                 You need to be signed in to see the protected page. Redirecting
                 you to the homepage

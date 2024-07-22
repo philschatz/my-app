@@ -1,18 +1,17 @@
-import styles from "./page.module.css";
-import { UserInfo } from "../components/user";
-import { UserToken } from "@/components/token";
-import { Protect, SignedOut } from "@clerk/nextjs";
-
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Text } from '@mantine/core'
+import { LoginOrSignup } from '@/components/login-or-signup';
+import Link from "next/link";
 
 export default function Home() {
     return (
-        <main className={styles.main}>
-            <UserInfo />
-            <Protect>
-                <UserToken />
-            </Protect>
-            This is the homepage.
-
+        <main>
+            <SignedOut>
+                <LoginOrSignup />
+            </SignedOut>
+            <SignedIn>
+                <Text><Link href="/dashboard">View your dashboard</Link></Text>
+            </SignedIn>
         </main>
     );
 }
