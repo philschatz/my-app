@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import type {NavLinkProps as MantineNavLinkProps} from "@mantine/core"
 import {NavLink as MantineNavLink} from "@mantine/core"
-import {IconChevronRight, IconLock, IconShieldLock, IconStar, IconClock} from '@tabler/icons-react';
+import {IconChevronRight, IconHomeStats, IconShieldLock, IconStar, IconClock} from '@tabler/icons-react';
 
 
 type NavLinkProps = MantineNavLinkProps & {
@@ -28,13 +28,13 @@ export const NavigationPanel = () => {
 
         <>
             <NavLink
-                to="/protected"
-                label="Link to a protected page"
-                leftSection={<IconLock size="1rem" stroke={1.5} />}
+                to="/dashboard"
+                label="Dashboard"
+                leftSection={<IconHomeStats size="1rem" stroke={1.5} />}
             />
             <NavLink
                 to="/admin"
-                label="Link to an admin page"
+                label="Organizations"
                 leftSection={<IconShieldLock size="1rem" stroke={1.5} />}
             />
             <NavLink
