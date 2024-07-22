@@ -1,11 +1,12 @@
 "use client";
 
-import { Avatar, Flex, Input, Skeleton, Table, Text } from "@mantine/core";
+import { Avatar, Flex, Skeleton, Table, Text } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import { Protect, useOrganizationList, useUser } from "@clerk/nextjs";
 import { IconTrashXFilled } from "@tabler/icons-react";
 import { OrganizationResource } from "@clerk/types";
 import { notifications } from "@mantine/notifications";
+import DebouncedInput from "./DebouncedInput";
 
 async function withConfirm(onConfirm: () => any) {
     modals.openConfirmModal({
@@ -81,14 +82,11 @@ export default function Organizations() {
                                 <Avatar src={org.organization.imageUrl} />
                             </Table.Td>
                             <Table.Td>
-                                <Input
+                                <DebouncedInput
                                     placeholder="Org name"
                                     value={org.organization.name}
-                                    onChange={(evt) =>
-                                        onRenameOrg(
-                                            org.organization,
-                                            evt.target.value,
-                                        )
+                                    onValueChanged={(newValue: string) =>
+                                        onRenameOrg(org.organization, newValue)
                                     }
                                 />
                             </Table.Td>
