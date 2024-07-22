@@ -1,6 +1,6 @@
 {
-  "hosted-zone:account=905418271997:domainName=sandbox.safeinsights.org:region=us-east-1": {
-    "Id": "/hostedzone/Z04032343IGDQUARH8SFJ",
-    "Name": "sandbox.safeinsights.org."
-  }
+    "hosted-zone:account=905418271997:domainName=sandbox.safeinsights.org:region=us-east-1": {
+        "Id": "/hostedzone/Z04032343IGDQUARH8SFJ",
+        "Name": "sandbox.safeinsights.org."
+    }
 }

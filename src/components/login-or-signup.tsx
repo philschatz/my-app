@@ -1,28 +1,26 @@
-'use client'
+"use client";
 
-import { Tabs, TextInput, PasswordInput, Button, Flex } from '@mantine/core';
-import { SignIn } from './signin'
-import { SignUp } from './signup'
+import { Tabs, TextInput, PasswordInput, Button, Flex } from "@mantine/core";
+import { SignIn } from "./signin";
+import { SignUp } from "./signup";
 
 export const LoginOrSignup: React.FC = () => {
-    console.log(Tabs.List, Tabs.Tab)
-
     return (
         <Flex justify="center" miw="400px">
-        <Tabs defaultValue="login">
-            <Tabs.List>
-                <Tabs.Tab value="login">Login</Tabs.Tab>
-                <Tabs.Tab value="signup">Signup</Tabs.Tab>
-            </Tabs.List>
+            <Tabs defaultValue="login">
+                <Tabs.List>
+                    <Tabs.Tab value="login">Login</Tabs.Tab>
+                    <Tabs.Tab value="signup">Signup</Tabs.Tab>
+                </Tabs.List>
 
-            <Tabs.Panel value="login" pt="xs">
-                <SignIn />
-            </Tabs.Panel>
+                <Tabs.Panel value="login" pt="xs">
+                    <SignIn />
+                </Tabs.Panel>
 
-            <Tabs.Panel value="signup" pt="xs">
-                <SignUp />
-            </Tabs.Panel>
-        </Tabs>
+                <Tabs.Panel value="signup" pt="xs">
+                    <SignUp />
+                </Tabs.Panel>
+            </Tabs>
         </Flex>
     );
 };
