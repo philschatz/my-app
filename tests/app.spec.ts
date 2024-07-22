@@ -1,13 +1,13 @@
 import { setupClerkTestingToken } from "@clerk/testing/playwright";
 import { test, expect } from "@playwright/test";
 
-test.describe('app', () => {
+test.describe("app", () => {
     test("unauthenticated user", async ({ page }) => {
         await setupClerkTestingToken({ page });
 
         await page.goto("/admin");
-        await expect(page).not.toHaveURL('/admin')
-        await expect(page).toHaveURL('/')
+        await expect(page).not.toHaveURL("/admin");
+        await expect(page).toHaveURL("/");
         // await page.locator('input[name=identifier]').fill(process.env.E2E_CLERK_USER_USERNAME!);
         // await page.getByRole('button', { name: 'Continue', exact: true }).click();
         // await page.locator('input[name=password]').fill(process.env.E2E_CLERK_USER_PASSWORD!);

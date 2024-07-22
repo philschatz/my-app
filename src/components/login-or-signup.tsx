@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { Tabs, TextInput, PasswordInput, Button, Flex } from '@mantine/core';
-import { SignIn } from './signin'
-import { SignUp } from './signup'
+import { Tabs, TextInput, PasswordInput, Button, Flex } from "@mantine/core";
+import { SignIn } from "./signin";
+import { SignUp } from "./signup";
 
 export const LoginOrSignup: React.FC = () => {
     return (

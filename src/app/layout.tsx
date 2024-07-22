@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
 import "./globals.css";
-import '@mantine/core/styles.css';
-import { Providers } from '@/components/providers'
+import "@mantine/core/styles.css";
+import { Providers } from "@/components/providers";
 import { AppLayout } from "@/components/app-layout";
 
 export const metadata: Metadata = {
@@ -19,11 +19,9 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <Providers>
-                    <AppLayout>
-                        {children}
-                    </AppLayout>
+                    <AppLayout>{children}</AppLayout>
                 </Providers>
             </body>
-        </html >
+        </html>
     );
 }

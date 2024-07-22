@@ -23,7 +23,8 @@ export default function ProtectedHome() {
                 permission="org:sys_memberships:manage"
                 fallback={
                     <p>
-                        Your account is not an administrator and does not have permissions to view or manage users.
+                        Your account is not an administrator and does not have
+                        permissions to view or manage users.
                     </p>
                 }
             >
