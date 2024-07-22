@@ -1,11 +1,7 @@
 import { headers } from 'next/headers'
 import jwt from "jsonwebtoken";
-import { ClerkExpressRequireAuth } from '@clerk/clerk-sdk-node';
 
 
-//import { requireAuth } from '@clerk/nextjs';
-
-const authorizedParties = ['http://localhost:3000', 'https://example.com']
 
 // from clerk dashboard -> settings -> api -> public key
 const CLERK_PEM_PUBLIC_KEY = `
@@ -20,11 +16,11 @@ uQIDAQAB
 -----END PUBLIC KEY-----
 `
 
-export async function POST(request: Request) {
+export async function POST() {
 
 
     const authorization = headers().get('authorization') || ''
-    const [type, token] = authorization.split(' ')
+    const [_, token] = authorization.split(' ')
 
     const decoded = jwt.verify(token, CLERK_PEM_PUBLIC_KEY)
     console.log('Decoded:', decoded)

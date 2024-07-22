@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSession, useClerk } from '@clerk/nextjs';
-import { Clerk } from '@clerk/types'
+import type { LoadedClerk } from '@clerk/types'
 import { Button, Flex } from '@mantine/core';
 
 const MAX_SECONDS = 15
 
-const onSignInClick = async (clerk: Clerk) => {
+const onSignInClick = async (clerk: LoadedClerk) => {
     if (clerk.session?.status == 'active') {
         await clerk.session?.end();
     }

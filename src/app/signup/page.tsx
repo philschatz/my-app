@@ -143,7 +143,7 @@ const EmailVerificationStep = () => {
             // TODO Explore clerk docs for how to better handle error messages
             //  Currently unclear because signUp.attemptVerification method just 422s and doesnt return anything useful
             if (err.errors?.length) {
-                err.errors.forEach(error => {
+                err.errors.forEach((error: any) => {
                     verifyForm.setFieldError('code', error.longMessage)
                 })
             }

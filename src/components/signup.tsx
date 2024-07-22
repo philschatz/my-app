@@ -4,6 +4,7 @@ import {isEmail, isNotEmpty, useForm} from "@mantine/form";
 import {useRouter} from "next/navigation";
 import {useState} from "react";
 import { reportError } from "@/components/errors";
+import { ClerkAPIError } from "@clerk/types";
 
 interface SignUpFormValues {
     email: string;
@@ -51,7 +52,7 @@ const EmailVerificationStep = () => {
             // TODO Explore clerk docs for how to better handle error messages
             //  Currently unclear because signUp.attemptVerification method just 422s and doesnt return anything useful
             if (err.errors?.length) {
-                err.errors.forEach(error => {
+                err.errors.forEach((error: ClerkAPIError) => {
                     verifyForm.setFieldError('code', error.longMessage)
                 })
             }

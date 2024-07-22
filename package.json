@@ -15,10 +15,10 @@
         "test:watch": "vitest --watch"
     },
     "dependencies": {
-        "@clerk/clerk-sdk-node": "^5.0.9",
-        "@clerk/nextjs": "^5.2.3",
         "@mantine/form": "^7.11.2",
         "@mantine/modals": "^7.11.2",
+        "@clerk/nextjs": "^5.2.4",
+        "@mantine/core": "^7.11.1",
         "@mantine/notifications": "^7.11.2",
         "@stylexjs/open-props": "^0.7.5",
         "@stylexjs/stylex": "^0.7.5",
@@ -33,7 +33,6 @@
     "devDependencies": {
         "@clerk/testing": "^1.1.11",
         "@clerk/types": "^4.8.0",
-        "@mantine/core": "^7.11.1",
         "@playwright/test": "^1.45.2",
         "@stylexjs/babel-plugin": "^0.7.5",
         "@stylexjs/eslint-plugin": "^0.7.5",
