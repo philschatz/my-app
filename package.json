@@ -12,6 +12,7 @@
         "lighthouse": "lighthouse --no-enable-error-reporting $([ 'zzz' = \"zzz$(command -v gp)\" ] && echo 'http://localhost:3000' || gp url 3000)",
         "test": "vitest run",
         "test:unit": "jest",
+        "playwright": "playwright",
         "test:e2e": "playwright test",
         "deploy": "cdk deploy",
         "test:watch": "vitest --watch"
