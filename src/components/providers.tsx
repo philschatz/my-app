@@ -13,7 +13,6 @@ export const Providers: React.FC<Props> = ({ children }) => {
             <ModalsProvider>
                 <ClerkProvider>{children}</ClerkProvider>
             </ModalsProvider>
-            <ClerkProvider>{children}</ClerkProvider>
         </MantineProvider>
     );
 };
