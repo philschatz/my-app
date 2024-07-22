@@ -4,6 +4,7 @@ import { Skeleton } from "@mantine/core";
 import { Protect, useUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { OrganizationMembersTable } from "@/components/organization-members";
+import Organizations from "@/components/Organizations";
 
 export default function ProtectedHome() {
     const { isSignedIn, isLoaded } = useUser();
@@ -28,6 +29,7 @@ export default function ProtectedHome() {
                     </p>
                 }
             >
+                <Organizations />
                 <OrganizationMembersTable />
             </Protect>
         </main>
