@@ -1,9 +1,6 @@
 "use client";
 
-import {
-    Input,
-    InputProps,
-} from "@mantine/core";
+import { Input, InputProps } from "@mantine/core";
 import { ChangeEvent, useCallback, useState } from "react";
 
 function debounce<TArgs extends any[]>(

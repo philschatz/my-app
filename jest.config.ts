@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type {Config} from 'jest';
+import type { Config } from "jest";
 
 const config: Config = {
     // All imported modules in your tests should be mocked automatically
@@ -126,9 +126,7 @@ const config: Config = {
     // rootDir: undefined,
 
     // A list of paths to directories that Jest should use to search for files in
-    roots: [
-       "src"
-    ],
+    roots: ["src"],
 
     // Allows you to use a custom runner instead of Jest's default test runner
     // runner: "jest-runner",
@@ -156,9 +154,9 @@ const config: Config = {
 
     // The glob patterns Jest uses to detect test files
     testMatch: [
-"<rootDir>/src/**/*.(test).{js,jsx,ts,tsx}",
+        "<rootDir>/src/**/*.(test).{js,jsx,ts,tsx}",
 
-    // //   "**/?(*.)+(spec|test).[tj]s?(x)"
+        // //   "**/?(*.)+(spec|test).[tj]s?(x)"
     ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped

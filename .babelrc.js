@@ -1,22 +1,23 @@
 const path = require("path");
-module.exports = api => ({
+module.exports = {
     presets: ["next/babel"],
     plugins: [
         [
-            "module-resolver", {
-                "root": ["./src"],
-                "alias": {
+            "module-resolver",
+            {
+                root: ["./src"],
+                alias: {
                     "^@/(.+)": "./src/\\1",
-                }
-            }
+                },
+            },
         ],
         [
             "@stylexjs/babel-plugin",
             // See all options in the babel plugin configuration docs:
             // https://stylexjs.com/docs/api/configuration/babel-plugin/
             {
-                dev: api.env("development"),
-                test: api.env("test"),
+                dev: process.env.NODE_ENV == "development",
+                test: process.env.NODE_ENV == "test",
                 genConditionalClasses: true,
                 treeshakeCompensation: true,
                 aliases: {
@@ -29,4 +30,4 @@ module.exports = api => ({
             },
         ],
     ],
-})
+};
