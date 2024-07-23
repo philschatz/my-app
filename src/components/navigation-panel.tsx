@@ -1,12 +1,13 @@
 import NextLink from "next/link";
-import type { NavLinkProps as MantineNavLinkProps } from "@mantine/core";
-import { NavLink as MantineNavLink } from "@mantine/core";
+import type {NavLinkProps as MantineNavLinkProps} from "@mantine/core";
+import {NavLink as MantineNavLink} from "@mantine/core";
 import {
     IconChevronRight,
+    IconClock,
     IconHomeStats,
     IconShieldLock,
     IconStar,
-    IconClock,
+    IconZoomReset,
 } from "@tabler/icons-react";
 
 type NavLinkProps = MantineNavLinkProps & {
@@ -54,6 +55,12 @@ export const NavigationPanel = () => {
                 to="/timer"
                 label="Time restricted"
                 leftSection={<IconClock size="1rem" stroke={1.5} />}
+            />
+
+            <NavLink
+                to="/reset-password"
+                label="Reset Password"
+                leftSection={<IconZoomReset size="1rem" stroke={1.5} />}
             />
         </>
     );

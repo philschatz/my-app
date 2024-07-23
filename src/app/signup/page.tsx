@@ -1,9 +1,10 @@
 "use client";
 import {
+    Anchor,
     Button,
     Checkbox,
     Group,
-    Loader,
+    Loader, NavLink,
     PasswordInput,
     Stack,
     Text,
@@ -15,6 +16,7 @@ import { isEmail, isNotEmpty, useForm } from "@mantine/form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { reportError } from "@/components/errors";
+import Link from "next/link";
 
 interface SignUpFormValues {
     email: string;
@@ -118,6 +120,10 @@ export default function Signup() {
                     <Button type="submit">Submit</Button>
                 </Group>
             </form>
+
+            <Anchor href='/reset-password'>
+                Forgot your password? Reset it here!
+            </Anchor>
         </Stack>
     );
 }
