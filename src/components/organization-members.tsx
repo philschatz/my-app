@@ -18,6 +18,7 @@ import { Protect } from "@clerk/nextjs";
 import { reportError } from "@/components/errors";
 import { IconTrashXFilled, IconAt } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
+import { withConfirm } from "./withConfirm";
 
 type MembershipState = {
     members: OrganizationMembershipResource[];
@@ -226,10 +227,14 @@ export const OrganizationMembersTable = () => {
                     {members.map((member) => (
                         <Table.Tr key={member.id}>
                             <Table.Td>
-                                <Avatar src={member.publicUserData.imageUrl} />
+                                <Avatar
+                                    src={member.publicUserData.imageUrl}
+                                    title={member.publicUserData.identifier}
+                                />
                             </Table.Td>
                             <Table.Td>
-                                {member.publicUserData.firstName}
+                                {member.publicUserData.firstName ||
+                                    member.publicUserData.identifier}
                             </Table.Td>
                             <Table.Td>
                                 {member.publicUserData.lastName}
@@ -246,7 +251,11 @@ export const OrganizationMembersTable = () => {
                                 </Table.Td>
                                 <Table.Td>
                                     <IconTrashXFilled
-                                        onClick={() => onDeleteMember(member)}
+                                        onClick={() =>
+                                            withConfirm(() =>
+                                                onDeleteMember(member),
+                                            )
+                                        }
                                         cursor="pointer"
                                     />
                                 </Table.Td>
