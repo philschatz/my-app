@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix && prettier --write .",
     "lighthouse": "lighthouse --no-enable-error-reporting $([ 'zzz' = \"zzz$(command -v gp)\" ] && echo 'http://localhost:3000' || gp url 3000)",
     "test": "vitest run",
-    "test:playwright": "playwright test",
+    "test:playwright": "playwright test --ui",
     "deploy": "cdk deploy",
     "test:watch": "vitest --watch"
   },

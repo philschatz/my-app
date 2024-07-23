@@ -38,21 +38,25 @@ export default defineConfig({
       testMatch: /global\.setup\.ts/,
     },
     {
+      name: 'auth setup',
+      testMatch: /auth\.setup\.ts/,
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      dependencies: ["global setup"],
+      dependencies: ["global setup", "auth setup"],
     },
 
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
-      dependencies: ["global setup"],
+      dependencies: ["global setup", "auth setup"],
     },
 
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-      dependencies: ["global setup"],
+      dependencies: ["global setup", "auth setup"],
     },
 
     /* Test against mobile viewports. */
