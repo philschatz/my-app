@@ -1,6 +1,6 @@
 import NextLink from "next/link";
-import type {NavLinkProps as MantineNavLinkProps} from "@mantine/core";
-import {NavLink as MantineNavLink} from "@mantine/core";
+import type { NavLinkProps as MantineNavLinkProps } from "@mantine/core";
+import { NavLink as MantineNavLink } from "@mantine/core";
 import {
     IconChevronRight,
     IconClock,

@@ -126,7 +126,7 @@ export function SignIn() {
                     key={form.key("password")}
                     {...form.getInputProps("password")}
                 />
-                <Anchor href='/reset-password'>
+                <Anchor href="/reset-password">
                     Forgot your password? Reset it here!
                 </Anchor>
 

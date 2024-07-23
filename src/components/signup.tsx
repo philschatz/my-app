@@ -1,10 +1,21 @@
-import {Anchor, Button, Checkbox, Group, Loader, PasswordInput, Stack, Text, TextInput, Title,} from "@mantine/core";
-import {useSignUp} from "@clerk/nextjs";
-import {isEmail, isNotEmpty, useForm} from "@mantine/form";
-import {useRouter} from "next/navigation";
-import {useState} from "react";
-import {reportError} from "@/components/errors";
-import {ClerkAPIError} from "@clerk/types";
+import {
+    Anchor,
+    Button,
+    Checkbox,
+    Group,
+    Loader,
+    PasswordInput,
+    Stack,
+    Text,
+    TextInput,
+    Title,
+} from "@mantine/core";
+import { useSignUp } from "@clerk/nextjs";
+import { isEmail, isNotEmpty, useForm } from "@mantine/form";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { reportError } from "@/components/errors";
+import { ClerkAPIError } from "@clerk/types";
 import Link from "next/link";
 
 interface SignUpFormValues {
@@ -173,7 +184,7 @@ export function SignUp() {
                     })}
                 />
 
-                <Anchor href='/reset-password'>
+                <Anchor href="/reset-password">
                     Forgot your password? Reset it here!
                 </Anchor>
 
