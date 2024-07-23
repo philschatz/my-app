@@ -22,7 +22,7 @@ export const QRTotp = () => {
             .catch((err) => {
                 reportError(err);
             });
-    }, [isLoaded]);
+    }, [isLoaded, !!user]); // eslint-disable-line react-hooks/exhaustive-deps
 
     if (!totp?.uri) return <Skeleton height={250} width={250} />;
 

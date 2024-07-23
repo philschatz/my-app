@@ -1,10 +1,10 @@
-import { expect, jest, test } from "@jest/globals";
+import { expect, vi, test } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { Providers as P } from "@/components/providers";
 import Home from "./page";
 import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider";
 
-jest.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/router", () => require("next-router-mock"));
 
 test("Pages Router", () => {
     render(
