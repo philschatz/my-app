@@ -12,11 +12,13 @@ test.describe('app', () => {
         await expect(page).toHaveURL('/')
     });
 
-    // TODO Why isn't the manage-mfa redirect not triggering
-    test("requires MFA", async ({browser}) => {
-        const userPage = await useUserPage(browser)
-        await userPage.goto('/manage-mfa')
-        await userPage.waitForURL('/manage-mfa')
-        await expect(userPage.getByText('Setup TOTP MFA')).toBeVisible();
+    test("protected page", async ({browser}) => {
+        const unauthenticatedPage = await browser.newPage();
+        await unauthenticatedPage.goto('/protected');
+        await unauthenticatedPage.getByText('You need to be signed in to see the protected page.').isVisible();
+        const userPage = await useUserPage(browser);
+        await userPage.goto('/protected');
+        await unauthenticatedPage.getByText('This is a protected page that only signed in users can see.').isVisible();
+        await userPage.waitForTimeout(5000);
     })
 });
