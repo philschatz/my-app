@@ -1,19 +1,18 @@
-import { ClerkProvider } from '@clerk/nextjs'
-import { MantineProvider } from '@mantine/core';
-import { theme } from './theme';
+import { ClerkProvider } from "@clerk/nextjs";
+import { MantineProvider } from "@mantine/core";
+import { theme } from "./theme";
+import { ModalsProvider } from "@mantine/modals";
 
 type Props = {
-  children: React.ReactNode
+    children: React.ReactNode;
 };
 
 export const Providers: React.FC<Props> = ({ children }) => {
-
     return (
         <MantineProvider theme={theme}>
-            <ClerkProvider>
-                {children}
-            </ClerkProvider>
+            <ModalsProvider>
+                <ClerkProvider>{children}</ClerkProvider>
+            </ModalsProvider>
         </MantineProvider>
-    )
-
-}
+    );
+};

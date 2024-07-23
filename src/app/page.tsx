@@ -1,7 +1,7 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { Text } from '@mantine/core'
-import { LoginOrSignup } from '@/components/login-or-signup';
+import { LoginOrSignup } from "@/components/login-or-signup";
 import Link from "next/link";
+import { Flex } from "@mantine/core";
 
 export default function Home() {
     return (
@@ -10,7 +10,9 @@ export default function Home() {
                 <LoginOrSignup />
             </SignedOut>
             <SignedIn>
-                <Text><Link href="/dashboard">View your dashboard</Link></Text>
+                <Flex mt="xl" c="blue" justify={"center"}>
+                    <Link href="/dashboard">View your dashboard</Link>
+                </Flex>
             </SignedIn>
         </main>
     );

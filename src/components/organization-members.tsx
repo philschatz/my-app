@@ -82,8 +82,10 @@ const InviteUser: React.FC<{ organization: OrganizationResource }> = ({
                     });
                 });
         } catch (error) {
-            reportError(error, `Failed to invite user with email ${form.values.email}`)
-
+            reportError(
+                error,
+                `Failed to invite user with email ${form.values.email}`,
+            );
         }
     });
 
@@ -159,7 +161,10 @@ const onCancelInvite = async (invite: OrganizationInvitationResource) => {
             message: `Invitation to ${invite.emailAddress} was successfully cancelled`,
         });
     } catch (error) {
-        reportError(error, `Failed to cancel invitation to ${invite.emailAddress}`);
+        reportError(
+            error,
+            `Failed to cancel invitation to ${invite.emailAddress}`,
+        );
     }
 };
 
@@ -204,7 +209,8 @@ export const OrganizationMembersTable = () => {
 
     return (
         <Flex direction="column">
-            <Table>
+            <Table captionSide="top">
+                <Table.Caption>Members</Table.Caption>
                 <Table.Thead>
                     <Table.Tr>
                         <Table.Th></Table.Th>

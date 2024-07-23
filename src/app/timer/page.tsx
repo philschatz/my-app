@@ -1,10 +1,5 @@
-import { Timer } from './timer'
+import { Timer } from "./timer";
 
 export default function TimedPage() {
-
-
-    return (
-        <Timer />
-
-    )
+    return <Timer />;
 }

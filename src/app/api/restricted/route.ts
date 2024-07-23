@@ -1,11 +1,5 @@
-import { headers } from 'next/headers'
+import { headers } from "next/headers";
 import jwt from "jsonwebtoken";
-import { ClerkExpressRequireAuth } from '@clerk/clerk-sdk-node';
-
-
-//import { requireAuth } from '@clerk/nextjs';
-
-const authorizedParties = ['http://localhost:3000', 'https://example.com']
 
 // from clerk dashboard -> settings -> api -> public key
 const CLERK_PEM_PUBLIC_KEY = `
@@ -18,21 +12,21 @@ TMR4GC01JPYiotcVV5wuTwlo5W55r71dtGsngWVtz2R6YF3K+haC4WQZ7THjC1A4
 W3KZ9wbEtNWzfnMKUc+RVpyvYOcsIP7XltMnPTXKu2XJ3kzqAQ6XfI/lR4ctRPQ1
 uQIDAQAB
 -----END PUBLIC KEY-----
-`
+`;
 
-export async function POST(request: Request) {
+export async function POST() {
+    const authorization = headers().get("authorization") || "";
+    const [_, token] = authorization.split(" ");
 
+    const decoded = jwt.verify(token, CLERK_PEM_PUBLIC_KEY);
+    console.log("Decoded:", decoded);
 
-    const authorization = headers().get('authorization') || ''
-    const [type, token] = authorization.split(' ')
+    console.log("Authorization:", token);
 
-    const decoded = jwt.verify(token, CLERK_PEM_PUBLIC_KEY)
-    console.log('Decoded:', decoded)
-
-    console.log('Authorization:', token)
-
-    const userId = (typeof decoded === 'string' ? decoded : decoded.UserID) as string
+    const userId = (
+        typeof decoded === "string" ? decoded : decoded.UserID
+    ) as string;
     return new Response(`Hello, user id: ${userId}`, {
         status: 200,
-    })
+    });
 }

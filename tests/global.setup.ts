@@ -1,7 +1,7 @@
-import { clerkSetup } from '@clerk/testing/playwright';
-import { test as setup } from '@playwright/test';
+import { clerkSetup } from "@clerk/testing/playwright";
+import { test as setup } from "@playwright/test";
 
-setup('global setup', async ({ }) => {
+setup("global setup", async ({}) => {
     await clerkSetup();
 
     // TODO we can probably just keep the username.password in source code if they are purely local, for now they can be set in GH actions

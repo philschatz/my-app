@@ -1,5 +1,5 @@
-import { setupClerkTestingToken } from "@clerk/testing/playwright";
-import { test, expect } from "@playwright/test";
+import {setupClerkTestingToken} from "@clerk/testing/playwright";
+import {expect, test} from "@playwright/test";
 import {useUserPage} from "./helpers";
 
 // TODO We can just set CLERK_TESTING_TOKEN env variable instead
@@ -8,8 +8,14 @@ test.describe('app', () => {
         await setupClerkTestingToken({ page });
 
         await page.goto("/admin");
-        await expect(page).not.toHaveURL('/admin')
-        await expect(page).toHaveURL('/')
+
+        await expect(page).not.toHaveURL("/admin");
+        await expect(page).toHaveURL("/");
+        // await page.locator('input[name=identifier]').fill(process.env.E2E_CLERK_USER_USERNAME!);
+        // await page.getByRole('button', { name: 'Continue', exact: true }).click();
+        // await page.locator('input[name=password]').fill(process.env.E2E_CLERK_USER_PASSWORD!);
+        // await page.getByRole('button', { name: 'Continue', exact: true }).click();
+        // await page.waitForURL('**/protected');
     });
 
     test("protected page", async ({browser}) => {
