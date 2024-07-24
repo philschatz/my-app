@@ -1,21 +1,12 @@
 "use client";
 
 import { Avatar, Flex, Skeleton, Table, Text } from "@mantine/core";
-import { modals } from "@mantine/modals";
 import { Protect, useOrganizationList, useUser } from "@clerk/nextjs";
 import { IconTrashXFilled } from "@tabler/icons-react";
 import { OrganizationResource } from "@clerk/types";
 import { notifications } from "@mantine/notifications";
 import DebouncedInput from "./DebouncedInput";
-
-async function withConfirm(onConfirm: () => any) {
-    modals.openConfirmModal({
-        title: "Confirmation Dialog",
-        children: <Text>Are you sure?</Text>,
-        labels: { confirm: "Confirm", cancel: "Cancel" },
-        onConfirm,
-    });
-}
+import { withConfirm } from "./withConfirm";
 
 async function onRenameOrg(org: OrganizationResource, newName: string) {
     try {
@@ -39,7 +30,7 @@ async function onDeleteOrg(org: OrganizationResource) {
         // await org.destroy();
         notifications.show({
             title: "Removed organization",
-            message: ` ${org.name} was successfully removed`,
+            message: ` ${org.name} was successfully removed (not really)`,
         });
     } catch (error) {
         notifications.show({
@@ -70,7 +61,6 @@ export default function Organizations() {
                         <Table.Th></Table.Th>
                         <Table.Th>Name</Table.Th>
                         <Protect permission="org:sys_memberships:manage">
-                            <Table.Th>Save</Table.Th>
                             <Table.Th>Delete</Table.Th>
                         </Protect>
                     </Table.Tr>
