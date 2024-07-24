@@ -2,10 +2,11 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { LoginOrSignup } from "@/components/login-or-signup";
 import Link from "next/link";
 import { Flex } from "@mantine/core";
+import { container } from "./styles.css.ts";
 
 export default function Home() {
     return (
-        <main>
+        <main className={container}>
             <SignedOut>
                 <LoginOrSignup />
             </SignedOut>
