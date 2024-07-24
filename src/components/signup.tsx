@@ -1,4 +1,5 @@
 import {
+    Anchor,
     Button,
     Checkbox,
     Group,
@@ -15,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { reportError } from "@/components/errors";
 import { ClerkAPIError } from "@clerk/types";
+import Link from "next/link";
 
 interface SignUpFormValues {
     email: string;
@@ -181,6 +183,10 @@ export function SignUp() {
                         type: "checkbox",
                     })}
                 />
+
+                <Anchor href="/reset-password">
+                    Forgot your password? Reset it here!
+                </Anchor>
 
                 <Group justify="flex-end" mt="md">
                     <Button type="submit">Submit</Button>
