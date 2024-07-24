@@ -5,6 +5,7 @@ import { Protect, useUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { OrganizationMembersTable } from "@/components/organization-members";
 import Organizations from "@/components/Organizations";
+import { AccessDeniedAlert } from "@/components/errors";
 
 export default function ProtectedHome() {
     const { isSignedIn, isLoaded } = useUser();
@@ -21,12 +22,7 @@ export default function ProtectedHome() {
         <main>
             <Protect
                 permission="org:sys_memberships:manage"
-                fallback={
-                    <p>
-                        Your account is not an administrator and does not have
-                        permissions to view or manage users.
-                    </p>
-                }
+                fallback={<AccessDeniedAlert />}
             >
                 <Organizations />
                 <OrganizationMembersTable />

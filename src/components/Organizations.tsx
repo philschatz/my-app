@@ -7,6 +7,7 @@ import { OrganizationResource } from "@clerk/types";
 import { notifications } from "@mantine/notifications";
 import DebouncedInput from "./DebouncedInput";
 import { withConfirm } from "./withConfirm";
+import { AccessDeniedAlert } from "@/components/errors";
 
 async function onRenameOrg(org: OrganizationResource, newName: string) {
     try {
@@ -60,7 +61,11 @@ export default function Organizations() {
                     <Table.Tr>
                         <Table.Th></Table.Th>
                         <Table.Th>Name</Table.Th>
-                        <Protect permission="org:sys_memberships:manage">
+                        <Protect
+                            permission="org:sys_memberships:manage"
+                            fallback={<AccessDeniedAlert />}
+                        >
+                            <Table.Th>Save</Table.Th>
                             <Table.Th>Delete</Table.Th>
                         </Protect>
                     </Table.Tr>

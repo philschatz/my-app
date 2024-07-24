@@ -1,6 +1,6 @@
 import { notifications } from "@mantine/notifications";
 import { Alert, AlertProps } from "@mantine/core";
-import { IconAlertTriangle } from "@tabler/icons-react";
+import { IconAlertTriangle, IconLockAccess } from "@tabler/icons-react";
 
 type ClerkAPIErrorResponse = {
     errors: Array<{
@@ -43,6 +43,26 @@ export const ErrorAlert: React.FC<ErrorAlertProps> = ({
 }) => {
     return (
         <Alert variant="light" color="red" title={title} icon={icon}>
+            {message}
+        </Alert>
+    );
+};
+
+type AccessDeniedAlertProps = { message?: string } & Omit<AlertProps, "title">;
+
+export const AccessDeniedAlert: React.FC<AccessDeniedAlertProps> = ({
+    icon = <IconLockAccess />,
+    message = "You do not have permission to access this resource.",
+    ...props
+}) => {
+    return (
+        <Alert
+            variant="light"
+            color="yellow"
+            title="Access Denied"
+            icon={icon}
+            {...props}
+        >
             {message}
         </Alert>
     );

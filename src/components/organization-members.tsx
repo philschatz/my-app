@@ -19,6 +19,7 @@ import { reportError } from "@/components/errors";
 import { IconTrashXFilled, IconAt } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 import { withConfirm } from "./withConfirm";
+import { AccessDeniedAlert } from "@/components/errors";
 
 type MembershipState = {
     members: OrganizationMembershipResource[];
@@ -217,7 +218,10 @@ export const OrganizationMembersTable = () => {
                         <Table.Th></Table.Th>
                         <Table.Th>First Name</Table.Th>
                         <Table.Th>Last Name</Table.Th>
-                        <Protect permission="org:sys_memberships:manage">
+                        <Protect
+                            permission="org:sys_memberships:manage"
+                            fallback={<AccessDeniedAlert />}
+                        >
                             <Table.Th>Admin</Table.Th>
                             <Table.Th>Delete</Table.Th>
                         </Protect>
@@ -239,7 +243,10 @@ export const OrganizationMembersTable = () => {
                             <Table.Td>
                                 {member.publicUserData.lastName}
                             </Table.Td>
-                            <Protect permission="org:sys_memberships:manage">
+                            <Protect
+                                permission="org:sys_memberships:manage"
+                                fallback={<AccessDeniedAlert />}
+                            >
                                 <Table.Td>
                                     <Checkbox
                                         checked={member.role === "org:admin"}
@@ -264,7 +271,10 @@ export const OrganizationMembersTable = () => {
                     ))}
                 </Table.Tbody>
             </Table>
-            <Protect permission="org:sys_memberships:manage">
+            <Protect
+                permission="org:sys_memberships:manage"
+                fallback={<AccessDeniedAlert />}
+            >
                 <InvitesTable invitations={invitations} />
                 {organization && <InviteUser organization={organization} />}
             </Protect>
