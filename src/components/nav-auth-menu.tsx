@@ -16,8 +16,8 @@ export const NavAuthMenu = () => {
 
             <SignedIn>
                 <Group>
-                    <UserButton />
                     <OrganizationSwitcher />
+                    <UserButton />
                 </Group>
             </SignedIn>
         </>
