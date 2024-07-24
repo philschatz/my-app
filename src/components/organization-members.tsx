@@ -218,10 +218,7 @@ export const OrganizationMembersTable = () => {
                         <Table.Th></Table.Th>
                         <Table.Th>First Name</Table.Th>
                         <Table.Th>Last Name</Table.Th>
-                        <Protect
-                            permission="org:sys_memberships:manage"
-                            fallback={<AccessDeniedAlert />}
-                        >
+                        <Protect permission="org:sys_memberships:manage">
                             <Table.Th>Admin</Table.Th>
                             <Table.Th>Delete</Table.Th>
                         </Protect>
@@ -243,10 +240,7 @@ export const OrganizationMembersTable = () => {
                             <Table.Td>
                                 {member.publicUserData.lastName}
                             </Table.Td>
-                            <Protect
-                                permission="org:sys_memberships:manage"
-                                fallback={<AccessDeniedAlert />}
-                            >
+                            <Protect permission="org:sys_memberships:manage">
                                 <Table.Td>
                                     <Checkbox
                                         checked={member.role === "org:admin"}
@@ -271,10 +265,7 @@ export const OrganizationMembersTable = () => {
                     ))}
                 </Table.Tbody>
             </Table>
-            <Protect
-                permission="org:sys_memberships:manage"
-                fallback={<AccessDeniedAlert />}
-            >
+            <Protect permission="org:sys_memberships:manage">
                 <InvitesTable invitations={invitations} />
                 {organization && <InviteUser organization={organization} />}
             </Protect>
