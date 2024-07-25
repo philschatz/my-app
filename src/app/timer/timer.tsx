@@ -5,7 +5,7 @@ import { useSession, useClerk } from "@clerk/nextjs";
 import type { LoadedClerk } from "@clerk/types";
 import { Button, Flex } from "@mantine/core";
 
-const MAX_SECONDS = 15;
+const MAX_SECONDS = 30;
 
 const onSignInClick = async (clerk: LoadedClerk) => {
     if (clerk.session?.status == "active") {
@@ -48,7 +48,11 @@ export const Timer: React.FC = () => {
         return (
             <Flex justify="center" align="center" mt="xl" direction="column">
                 <h1>Sesion invalid, {invalidReason}</h1>
-                <Button onClick={() => onSignInClick(clerk)}>Sign in</Button>
+                {!isSignedIn && (
+                    <Button onClick={() => onSignInClick(clerk)}>
+                        Sign in
+                    </Button>
+                )}
             </Flex>
         );
     }
