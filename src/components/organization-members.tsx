@@ -19,6 +19,7 @@ import { reportError } from "@/components/errors";
 import { IconTrashXFilled, IconAt } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 import { withConfirm } from "./withConfirm";
+import { AccessDeniedAlert } from "@/components/errors";
 
 type MembershipState = {
     members: OrganizationMembershipResource[];

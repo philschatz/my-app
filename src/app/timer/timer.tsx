@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSession, useClerk } from "@clerk/nextjs";
 import type { LoadedClerk } from "@clerk/types";
 import { Button, Flex } from "@mantine/core";
+import { AccessDeniedAlert } from "@/components/errors";
 
 const MAX_SECONDS = 30;
 
