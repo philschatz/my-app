@@ -66,7 +66,7 @@ export function Dashboard() {
 
     return (
         <div>
-            <SimpleGrid mt="xxl" cols={{ base: 1, sm: 3 }}>
+            <SimpleGrid mt="xl" cols={{ base: 1, sm: 3 }}>
                 {stats}
             </SimpleGrid>
         </div>
