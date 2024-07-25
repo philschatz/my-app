@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useSession, useClerk } from "@clerk/nextjs";
 import type { LoadedClerk } from "@clerk/types";
 import { Button, Flex } from "@mantine/core";
-import { AccessDeniedAlert } from "@/components/errors";
 
 const MAX_SECONDS = 30;
 
@@ -50,7 +49,7 @@ export const Timer: React.FC = () => {
             <Flex justify="center" align="center" mt="xl" direction="column">
                 <h1>Sesion invalid, {invalidReason}</h1>
                 <Button onClick={() => onSignInClick(clerk)}>
-                    {isSignedIn ? 'Refresh Login' : 'Login'}
+                    {isSignedIn ? "Refresh Login" : "Login"}
                 </Button>
             </Flex>
         );
