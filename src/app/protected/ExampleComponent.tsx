@@ -1,9 +1,8 @@
 "use client";
 
-import AppContext from "@/AppContext";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { UserResource } from "@clerk/types";
 import { redirect } from "next/navigation";
-import { useContext } from "react";
 
 // copied from Clerk because they don't export this type
 type UseUserReturn =
@@ -29,7 +28,6 @@ type Props = {
 
 export default function Hoisted({ useUser }: Props) {
     const { isSignedIn, isLoaded } = useUser();
-    const { SignedIn, SignedOut } = useContext(AppContext);
     if (isLoaded && !isSignedIn) {
         redirect("/");
     }
