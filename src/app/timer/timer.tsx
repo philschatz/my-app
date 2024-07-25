@@ -11,7 +11,7 @@ const onSignInClick = async (clerk: LoadedClerk) => {
     if (clerk.session?.status == "active") {
         await clerk.session?.end();
     }
-    clerk.openSignIn();
+    clerk.openSignIn({ forceRedirectUrl: window.location.href });
 };
 
 export const Timer: React.FC = () => {
