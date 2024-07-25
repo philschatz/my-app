@@ -50,7 +50,7 @@ export const Timer: React.FC = () => {
                 <h1>Sesion invalid, {invalidReason}</h1>
                 {!isSignedIn && (
                     <Button onClick={() => onSignInClick(clerk)}>
-                        Sign in
+                        Refresh Login
                     </Button>
                 )}
             </Flex>
