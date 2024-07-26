@@ -4,10 +4,11 @@ import Page from "./page";
 
 import * as ClerkNextJS from "@clerk/nextjs";
 import * as NextNavigation from "next/navigation";
+import { MantineProvider } from "@mantine/core";
 vi.mock("@clerk/nextjs");
 vi.mock("next/navigation");
 
-describe("Protected Page", () => {
+describe("Admin Page", () => {
     afterEach(() => {
         vi.resetAllMocks();
     });
@@ -31,6 +32,20 @@ describe("Protected Page", () => {
             user: null as never,
         });
         render(<Page />);
+        expect(spyRedirect).not.toHaveBeenCalled();
+    });
+
+    it("shows a loading page", () => {
+        spyUseUser.mockReturnValue({
+            isLoaded: false,
+            isSignedIn: undefined,
+            user: null as never,
+        });
+        render(
+            <MantineProvider>
+                <Page />
+            </MantineProvider>,
+        );
         expect(spyRedirect).not.toHaveBeenCalled();
     });
 });
