@@ -10,7 +10,7 @@ export default defineConfig({
         include: ["src/**/*.(test).{js,jsx,ts,tsx}"],
         coverage: {
             enabled: true,
-            skipFull: true,
+            // skipFull: true,
             thresholds: { 100: true },
         },
     },
