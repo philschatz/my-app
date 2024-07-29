@@ -1,11 +1,23 @@
-import { Group, Paper, Text, ThemeIcon, SimpleGrid } from "@mantine/core";
+import {
+    Group,
+    Paper,
+    Text,
+    ThemeIcon,
+    SimpleGrid,
+    Card,
+    CardSection,
+    Badge,
+    Image,
+} from "@mantine/core";
 import { IconArrowUpRight, IconArrowDownRight } from "@tabler/icons-react";
 
 const data = [
-    { title: "Study Completions", value: "13,456", diff: 14 },
     { title: "Signups", value: "4,145", diff: -13 },
+    { title: "Study Completions", value: "13,456", diff: 14 },
     { title: "Study Abandonment", value: "%11.3", diff: -2.8 },
 ];
+
+type Study = { title: string; description: string };
 
 export function Dashboard() {
     const stats = data.map((stat) => {
@@ -54,7 +66,9 @@ export function Dashboard() {
 
     return (
         <div>
-            <SimpleGrid cols={{ base: 1, sm: 3 }}>{stats}</SimpleGrid>
+            <SimpleGrid mt="xl" cols={{ base: 1, sm: 3 }}>
+                {stats}
+            </SimpleGrid>
         </div>
     );
 }

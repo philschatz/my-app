@@ -1,11 +1,12 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Dashboard } from "@/components/dashboard";
+import { AccessDeniedAlert } from "@/components/errors";
 
 export default function Home() {
     return (
         <main>
             <SignedOut>
-                <h1>you must be signed in to access the dashboard</h1>
+                <AccessDeniedAlert />
             </SignedOut>
             <SignedIn>
                 <Dashboard />
