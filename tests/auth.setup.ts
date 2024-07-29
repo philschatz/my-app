@@ -2,7 +2,6 @@ import {test as setup} from '@playwright/test';
 
 const adminFile = 'playwright/.auth/admin.json';
 
-
 // TODO set up these users in clerk or automate test to create them (email verification might be hard with playwright?)
 setup('authenticate as admin', async ({ page }) => {
     await page.goto('/');

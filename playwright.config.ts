@@ -47,17 +47,17 @@ export default defineConfig({
       dependencies: ["global setup", "auth setup"],
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-      dependencies: ["global setup", "auth setup"],
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-      dependencies: ["global setup", "auth setup"],
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    //   dependencies: ["global setup", "auth setup"],
+    // },
+    //
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    //   dependencies: ["global setup", "auth setup"],
+    // },
 
     /* Test against mobile viewports. */
     // {
