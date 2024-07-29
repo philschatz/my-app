@@ -171,7 +171,7 @@ export function SignUp() {
                     withAsterisk
                     label="pw"
                     width={400}
-                    placeholder='pw'
+                    placeholder="pw"
                     key={form.key("password")}
                     {...form.getInputProps("password")}
                 />
