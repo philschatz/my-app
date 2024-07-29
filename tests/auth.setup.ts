@@ -9,7 +9,7 @@ setup("authenticate as admin", async ({ page }) => {
         .getByPlaceholder("your@email.com")
         .first()
         .fill("admin@test.com");
-    await page.getByPlaceholder("password").first().fill("test123");
+    await page.getByPlaceholder("pw").first().fill("test12345!");
     await page.getByRole("button", { name: "Login" }).click();
 
     await page.context().storageState({ path: adminFile });
@@ -20,7 +20,7 @@ const userFile = "playwright/.auth/user.json";
 setup("authenticate as user", async ({ page }) => {
     await page.goto("/");
     await page.getByPlaceholder("your@email.com").first().fill("user@test.com");
-    await page.getByPlaceholder("password").first().fill("test123");
+    await page.getByPlaceholder("pw").first().fill("test12345!");
     await page.getByRole("button", { name: "Login" }).click();
 
     await page.context().storageState({ path: userFile });
