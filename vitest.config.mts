@@ -6,11 +6,12 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
     plugins: [react(), tsconfigPaths()],
     test: {
+        mockReset: true,
         environment: "happy-dom",
         include: ["src/**/*.(test).{js,jsx,ts,tsx}"],
         coverage: {
             enabled: true,
-            skipFull: true,
+            // skipFull: true,
             thresholds: { 100: true },
         },
     },
