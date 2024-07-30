@@ -9,9 +9,6 @@ vi.mock("@clerk/nextjs");
 vi.mock("next/navigation");
 
 describe("Admin Page", () => {
-    afterEach(() => {
-        vi.resetAllMocks();
-    });
     const spyRedirect = vi.spyOn(NextNavigation, "redirect");
     const spyUseUser = vi.spyOn(ClerkNextJS, "useUser");
 
