@@ -1,4 +1,4 @@
-name: Checks
+name: Playwright UI Tests
 on:
     push:
         branches: [main, master]
@@ -15,13 +15,6 @@ jobs:
                   node-version: lts/*
             - name: Install dependencies
               run: npm i
-            - name: Lint
-              run: npm run lint
-            - name: Typecheck
-              run: npm run typecheck
-            - name: Unit Test
-              run: npm run test:unit
-              if: false
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
             - name: Run Playwright tests

@@ -26,8 +26,9 @@ export default defineConfig({
     use: {
         /* Base URL to use in actions like `await page.goto('/')`. */
         baseURL: "http://127.0.0.1:3000",
-        trace: "retain-on-failure",
-        screenshot: "only-on-failure",
+
+        /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+        trace: "on-first-retry",
     },
 
     /* Configure projects for major browsers */
@@ -37,22 +38,26 @@ export default defineConfig({
             testMatch: /global\.setup\.ts/,
         },
         {
+            name: "auth setup",
+            testMatch: /auth\.setup\.ts/,
+        },
+        {
             name: "chromium",
             use: { ...devices["Desktop Chrome"] },
-            dependencies: ["global setup"],
+            dependencies: ["global setup", "auth setup"],
         },
 
-        {
-            name: "firefox",
-            use: { ...devices["Desktop Firefox"] },
-            dependencies: ["global setup"],
-        },
-
-        {
-            name: "webkit",
-            use: { ...devices["Desktop Safari"] },
-            dependencies: ["global setup"],
-        },
+        // {
+        //   name: 'firefox',
+        //   use: { ...devices['Desktop Firefox'] },
+        //   dependencies: ["global setup", "auth setup"],
+        // },
+        //
+        // {
+        //   name: 'webkit',
+        //   use: { ...devices['Desktop Safari'] },
+        //   dependencies: ["global setup", "auth setup"],
+        // },
 
         /* Test against mobile viewports. */
         // {

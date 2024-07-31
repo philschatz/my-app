@@ -122,6 +122,7 @@ export function SignIn() {
                 <PasswordInput
                     withAsterisk
                     label="Password"
+                    placeholder="pw"
                     width={400}
                     key={form.key("password")}
                     {...form.getInputProps("password")}

@@ -169,8 +169,9 @@ export function SignUp() {
 
                 <PasswordInput
                     withAsterisk
-                    label="Password"
+                    label="pw"
                     width={400}
+                    placeholder="pw"
                     key={form.key("password")}
                     {...form.getInputProps("password")}
                 />
